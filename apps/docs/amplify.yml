@@ -1,0 +1,30 @@
+version: 1
+applications:
+  - appRoot: apps/docs
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            - cd ..   # move to monorepo root
+            - yarn install --frozen-lockfile
+        build:
+          commands:
+            - cd ..
+            - npx turbo run build --filter=docs
+      artifacts:
+        baseDirectory: apps/docs/.next
+        files:
+          - '**/*'
+      cache:
+        paths:
+          - node_modules/**/*
+          - ../node_modules/**/*
+          - .turbo/**/*
+    source:
+      buildFilter:
+        include:
+          - apps/docs/**
+          - packages/ui/**
+          - packages/config/**
+        exclude:
+          - apps/web/**
