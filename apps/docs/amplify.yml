@@ -5,11 +5,11 @@ applications:
       phases:
         preBuild:
           commands:
-            - cd ..   # move to monorepo root
+            - cd ../..   # move to monorepo root
             - yarn install --frozen-lockfile
         build:
           commands:
-            - cd ..
+            - cd ../..
             - npx turbo run build --filter=docs
       artifacts:
         baseDirectory: apps/docs/.next
