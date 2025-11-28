@@ -8,7 +8,7 @@ applications:
             - yarn install --frozen-lockfile
         build:
           commands:
-            - npx turbo run build --filter=web
+            - yarn workspace web build
       artifacts:
         baseDirectory: apps/web/.next
         files:
