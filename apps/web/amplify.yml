@@ -10,7 +10,7 @@ applications:
           commands:
             - yarn workspace web build
       artifacts:
-        baseDirectory: apps/web/.next
+        baseDirectory: .next
         files:
           - '**/*'
       cache:
